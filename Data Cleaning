@@ -1,3 +1,5 @@
+# Handling missing values and generating data summaries
+
 > head(transactionData)
     DATE STORE_NBR LYLTY_CARD_NBR TXN_ID PROD_NBR
    <int>     <int>          <int>  <int>    <int>
