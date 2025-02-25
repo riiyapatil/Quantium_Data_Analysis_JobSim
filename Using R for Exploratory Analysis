@@ -37,3 +37,281 @@
 5: Kettle Tortilla ChpsHny&Jlpno Chili 150g        3      13.8
 6: Old El Paso Salsa   Dip Tomato Mild 300g        1       5.1
 > 
+#Data Types for each column attribute
+> str(transactionData)
+Classes 'data.table' and 'data.frame':	264836 obs. of  8 variables:
+ $ DATE          : Date, format: "2018-10-17" "2019-05-14" ...
+ $ STORE_NBR     : int  1 1 1 2 2 4 4 4 5 7 ...
+ $ LYLTY_CARD_NBR: int  1000 1307 1343 2373 2426 4074 4149 4196 5026 7150 ...
+ $ TXN_ID        : int  1 348 383 974 1038 2982 3333 3539 4525 6900 ...
+ $ PROD_NBR      : int  5 66 61 69 108 57 16 24 42 52 ...
+ $ PROD_NAME     : chr  "Natural Chip        Compny SeaSalt175g" "CCs Nacho Cheese    175g" "Smiths Crinkle Cut  Chips Chicken 170g" "Smiths Chip Thinly  S/Cream&Onion 175g" ...
+ $ PROD_QTY      : int  2 3 2 5 3 1 1 1 1 2 ...
+ $ TOT_SALES     : num  6 6.3 2.9 15 13.8 5.1 5.7 3.6 3.9 7.2 ...
+ - attr(*, ".internal.selfref")=<externalptr> 
+> 
+#Gives an overview of the column (useful if it's a factor or character variable).
+> summary(transactionData$PROD_NAME)
+   Length     Class      Mode 
+   264836 character character 
+
+# Counts how many unique product names exist.
+> length(unique(transactionData$PROD_NAME))
+[1] 114
+#Creates a frequency table, showing how many times each product appears
+> table(transactionData$PROD_NAME)
+
+                       Burger Rings 220g 
+                                    1564 
+                CCs Nacho Cheese    175g 
+                                    1498 
+                       CCs Original 175g 
+                                    1514 
+                CCs Tasty Cheese    175g 
+                                    1539 
+          Cheetos Chs & Bacon Balls 190g 
+                                    1479 
+                      Cheetos Puffs 165g 
+                                    1448 
+                    Cheezels Cheese 330g 
+                                    3149 
+                Cheezels Cheese Box 125g 
+                                    1454 
+          Cobs Popd Sea Salt  Chips 110g 
+                                    3265 
+  Cobs Popd Sour Crm  &Chives Chips 110g 
+                                    3159 
+Cobs Popd Swt/Chlli &Sr/Cream Chips 110g 
+                                    3269 
+        Dorito Corn Chp     Supreme 380g 
+                                    3185 
+        Doritos Cheese      Supreme 330g 
+                                    3052 
+ Doritos Corn Chip Mexican Jalapeno 150g 
+                                    3204 
+ Doritos Corn Chip Southern Chicken 150g 
+                                    3172 
+ Doritos Corn Chips  Cheese Supreme 170g 
+                                    3217 
+   Doritos Corn Chips  Nacho Cheese 170g 
+                                    3160 
+       Doritos Corn Chips  Original 170g 
+                                    3121 
+                Doritos Mexicana    170g 
+                                    3115 
+         Doritos Salsa       Medium 300g 
+                                    1449 
+                Doritos Salsa Mild  300g 
+                                    1472 
+          French Fries Potato Chips 175g 
+                                    1418 
+   Grain Waves         Sweet Chilli 210g 
+                                    3167 
+   Grain Waves Sour    Cream&Chives 210G 
+                                    3105 
+   GrnWves Plus Btroot & Chilli Jam 180g 
+                                    1468 
+ Infuzions BBQ Rib   Prawn Crackers 110g 
+                                    3174 
+ Infuzions Mango     Chutny Papadums 70g 
+                                    1507 
+Infuzions SourCream&Herbs Veg Strws 110g 
+                                    3134 
+Infuzions Thai SweetChili PotatoMix 110g 
+                                    3242 
+  Infzns Crn Crnchers Tangy Gcamole 110g 
+                                    3144 
+            Kettle 135g Swt Pot Sea Salt 
+                                    3257 
+                      Kettle Chilli 175g 
+                                    3038 
+        Kettle Honey Soy    Chicken 175g 
+                                    3148 
+  Kettle Mozzarella   Basil & Pesto 175g 
+                                    3304 
+                    Kettle Original 175g 
+                                    3159 
+    Kettle Sea Salt     And Vinegar 175g 
+                                    3173 
+      Kettle Sensations   BBQ&Maple 150g 
+                                    3083 
+Kettle Sensations   Camembert & Fig 150g 
+                                    3219 
+   Kettle Sensations   Siracha Lime 150g 
+                                    3127 
+ Kettle Sweet Chilli And Sour Cream 175g 
+                                    3200 
+ Kettle Tortilla ChpsBtroot&Ricotta 150g 
+                                    3146 
+    Kettle Tortilla ChpsFeta&Garlic 150g 
+                                    3138 
+Kettle Tortilla ChpsHny&Jlpno Chili 150g 
+                                    3296 
+  NCC Sour Cream &    Garden Chives 175g 
+                                    1419 
+  Natural Chip        Compny SeaSalt175g 
+                                    1468 
+ Natural Chip Co     Tmato Hrb&Spce 175g 
+                                    1572 
+  Natural ChipCo      Hony Soy Chckn175g 
+                                    1460 
+  Natural ChipCo Sea  Salt & Vinegr 175g 
+                                    1550 
+Old El Paso Salsa   Dip Chnky Tom Ht300g 
+                                    3125 
+ Old El Paso Salsa   Dip Tomato Med 300g 
+                                    3114 
+Old El Paso Salsa   Dip Tomato Mild 300g 
+                                    3085 
+                Pringles Barbeque   134g 
+                                    3210 
+     Pringles Chicken    Salt Crips 134g 
+                                    3104 
+        Pringles Mystery    Flavour 134g 
+                                    3114 
+         Pringles Original   Crisps 134g 
+                                    3157 
+                Pringles Slt Vingar 134g 
+                                    3095 
+          Pringles SourCream  Onion 134g 
+                                    3162 
+        Pringles Sthrn FriedChicken 134g 
+                                    3083 
+            Pringles Sweet&Spcy BBQ 134g 
+                                    3177 
+        RRD Chilli&         Coconut 150g 
+                                    1506 
+        RRD Honey Soy       Chicken 165g 
+                                    1513 
+                RRD Lime & Pepper   165g 
+                                    1473 
+                RRD Pc Sea Salt     165g 
+                                    1431 
+     RRD SR Slow Rst     Pork Belly 150g 
+                                    1526 
+                RRD Salt & Vinegar  165g 
+                                    1474 
+    RRD Steak &         Chimuchurri 150g 
+                                    1455 
+     RRD Sweet Chilli &  Sour Cream 165g 
+                                    1516 
+   Red Rock Deli Chikn&Garlic Aioli 150g 
+                                    1434 
+Red Rock Deli SR    Salsa & Mzzrlla 150g 
+                                    1458 
+ Red Rock Deli Sp    Salt & Truffle 150G 
+                                    1498 
+    Red Rock Deli Thai  Chilli&Lime 150g 
+                                    1495 
+      Smith Crinkle Cut   Bolognese 150g 
+                                    1451 
+   Smith Crinkle Cut   Mac N Cheese 150g 
+                                    1512 
+   Smiths Chip Thinly  Cut Original 175g 
+                                    1614 
+  Smiths Chip Thinly  CutSalt/Vinegr175g 
+                                    1440 
+  Smiths Chip Thinly  S/Cream&Onion 175g 
+                                    1473 
+       Smiths Crinkle      Original 330g 
+                                    3142 
+Smiths Crinkle Chips Salt & Vinegar 330g 
+                                    3197 
+ Smiths Crinkle Cut  Chips Barbecue 170g 
+                                    1489 
+  Smiths Crinkle Cut  Chips Chicken 170g 
+                                    1484 
+ Smiths Crinkle Cut  Chips Chs&Onion170g 
+                                    1481 
+ Smiths Crinkle Cut  Chips Original 170g 
+                                    1461 
+Smiths Crinkle Cut  French OnionDip 150g 
+                                    1438 
+ Smiths Crinkle Cut  Salt & Vinegar 170g 
+                                    1455 
+     Smiths Crinkle Cut  Snag&Sauce 150g 
+                                    1503 
+   Smiths Crinkle Cut  Tomato Salsa 150g 
+                                    1470 
+  Smiths Crnkle Chip  Orgnl Big Bag 380g 
+                                    3233 
+Smiths Thinly       Swt Chli&S/Cream175G 
+                                    1461 
+  Smiths Thinly Cut   Roast Chicken 175g 
+                                    1519 
+    Snbts Whlgrn Crisps Cheddr&Mstrd 90g 
+                                    1576 
+Sunbites Whlegrn    Crisps Frch/Onin 90g 
+                                    1432 
+  Thins Chips         Originl saltd 175g 
+                                    1441 
+          Thins Chips Light&  Tangy 175g 
+                                    3188 
+        Thins Chips Salt &  Vinegar 175g 
+                                    3103 
+        Thins Chips Seasonedchicken 175g 
+                                    3114 
+    Thins Potato Chips  Hot & Spicy 175g 
+                                    3229 
+         Tostitos Lightly    Salted 175g 
+                                    3074 
+       Tostitos Smoked     Chipotle 175g 
+                                    3145 
+           Tostitos Splash Of  Lime 175g 
+                                    3252 
+                Twisties Cheese     270g 
+                                    3115 
+         Twisties Cheese     Burger 250g 
+                                    3169 
+                    Twisties Chicken270g 
+                                    3170 
+  Tyrrells Crisps     Ched & Chives 165g 
+                                    3268 
+ Tyrrells Crisps     Lightly Salted 165g 
+                                    3174 
+        WW Crinkle Cut      Chicken 175g 
+                                    1467 
+       WW Crinkle Cut      Original 175g 
+                                    1410 
+       WW D/Style Chip     Sea Salt 200g 
+                                    1469 
+          WW Original Corn    Chips 200g 
+                                    1495 
+          WW Original Stacked Chips 160g 
+                                    1487 
+  WW Sour Cream &OnionStacked Chips 160g 
+                                    1483 
+     WW Supreme Cheese   Corn Chips 200g 
+                                    1509 
+          Woolworths Cheese   Rings 190g 
+                                    1516 
+          Woolworths Medium   Salsa 300g 
+                                    1430 
+          Woolworths Mild     Salsa 300g 
+                                    1491 
+#first 10 unique product names
+> head(unique(transactionData$PROD_NAME), 10)
+ [1] "Natural Chip        Compny SeaSalt175g"  
+ [2] "CCs Nacho Cheese    175g"                
+ [3] "Smiths Crinkle Cut  Chips Chicken 170g"  
+ [4] "Smiths Chip Thinly  S/Cream&Onion 175g"  
+ [5] "Kettle Tortilla ChpsHny&Jlpno Chili 150g"
+ [6] "Old El Paso Salsa   Dip Tomato Mild 300g"
+ [7] "Smiths Crinkle Chips Salt & Vinegar 330g"
+ [8] "Grain Waves         Sweet Chilli 210g"   
+ [9] "Doritos Corn Chip Mexican Jalapeno 150g" 
+[10] "Grain Waves Sour    Cream&Chives 210G"   
+> 
+# Check for total missing values in the entire dataset
+> sum(is.na(transactionData))
+[1] 0
+# Check missing values column by column
+
+> colSums(is.na(transactionData))
+          DATE      STORE_NBR LYLTY_CARD_NBR         TXN_ID       PROD_NBR 
+             0              0              0              0              0 
+     PROD_NAME       PROD_QTY      TOT_SALES 
+             0              0              0 
+# Remove rows with any missing values
+> data_cleaned <- na.omit(transactionData)
+
