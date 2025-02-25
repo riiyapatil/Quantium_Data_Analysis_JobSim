@@ -1,0 +1,18 @@
+> head(transactionData)
+    DATE STORE_NBR LYLTY_CARD_NBR TXN_ID PROD_NBR
+   <int>     <int>          <int>  <int>    <int>
+1: 43390         1           1000      1        5
+2: 43599         1           1307    348       66
+3: 43605         1           1343    383       61
+4: 43329         2           2373    974       69
+5: 43330         2           2426   1038      108
+6: 43604         4           4074   2982       57
+                                  PROD_NAME PROD_QTY TOT_SALES
+                                     <char>    <int>     <num>
+1:   Natural Chip        Compny SeaSalt175g        2       6.0
+2:                 CCs Nacho Cheese    175g        3       6.3
+3:   Smiths Crinkle Cut  Chips Chicken 170g        2       2.9
+4:   Smiths Chip Thinly  S/Cream&Onion 175g        5      15.0
+5: Kettle Tortilla ChpsHny&Jlpno Chili 150g        3      13.8
+6: Old El Paso Salsa   Dip Tomato Mild 300g        1       5.1
+> 
